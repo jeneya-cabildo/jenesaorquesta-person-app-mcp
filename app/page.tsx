@@ -1,15 +1,13 @@
-import UserSearch from './components/user-search';
-import { TechnicalOverview } from './components/technical-overview';
-import { UserDialog } from './components/user-dialog';
+import PersonList from './components/person-list';
 
-export default async function Home({ searchParams }: { searchParams: Promise<{ userId?: string }> }) {
+export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">User Search</h1>
-      <UserSearch searchParams={searchParams} />
-      <UserDialog />
-      <TechnicalOverview />
-
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold mb-2">Person App</h1>
+        <p className="text-gray-600">Manage your contacts with full CRUD operations and database integration.</p>
+      </div>
+      <PersonList />
     </div>
   );
 }

@@ -55,9 +55,7 @@ export default function MutableDialog<T extends FieldValues>({
         const result = formSchema.parse(values);
         console.log('Validation passed:', result); // Log the result after validation
         return { values: result, errors: {} };
-      }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-       catch (err: any) {
+      } catch (err: any) {
         if (err.formErrors?.fieldErrors) {
           // check if err is instance of ZodError then return the formErrors
           console.log('Validation errors:',  err.formErrors.fieldErrors); // Log the validation errors

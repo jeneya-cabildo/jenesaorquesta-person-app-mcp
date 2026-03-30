@@ -17,6 +17,7 @@ export function useUser(userId: string | null) {
         }
       })
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setUser(null)
     }
   }, [userId])
