@@ -6,6 +6,7 @@ export default {
     path: "prisma/migrations",
   },
   datasource: {
+    provider: "postgresql",
     url: process.env.DATABASE_URL,
   },
 };
