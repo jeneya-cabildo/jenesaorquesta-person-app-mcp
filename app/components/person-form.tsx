@@ -61,11 +61,11 @@ export default function PersonForm({ initialData, onSuccess, onCancel }: PersonF
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
-      {error && <div className="p-3 bg-red-50 text-red-700 rounded">{error}</div>}
+    <form onSubmit={onSubmit} className="space-y-5">
+      {error && <div className="p-4 bg-red-50 text-red-700 rounded-md font-medium border border-red-200">{error}</div>}
 
-      <div>
-        <Label htmlFor="name">Name *</Label>
+      <div className="space-y-2">
+        <Label htmlFor="name" className="text-base font-bold text-gray-900">Name *</Label>
         <Input
           id="name"
           name="name"
@@ -76,8 +76,8 @@ export default function PersonForm({ initialData, onSuccess, onCancel }: PersonF
         />
       </div>
 
-      <div>
-        <Label htmlFor="email">Email *</Label>
+      <div className="space-y-2">
+        <Label htmlFor="email" className="text-base font-bold text-gray-900">Email *</Label>
         <Input
           id="email"
           name="email"
@@ -88,8 +88,8 @@ export default function PersonForm({ initialData, onSuccess, onCancel }: PersonF
         />
       </div>
 
-      <div>
-        <Label htmlFor="phone">Phone</Label>
+      <div className="space-y-2">
+        <Label htmlFor="phone" className="text-base font-bold text-gray-900">Phone</Label>
         <Input
           id="phone"
           name="phone"
@@ -99,8 +99,8 @@ export default function PersonForm({ initialData, onSuccess, onCancel }: PersonF
         />
       </div>
 
-      <div>
-        <Label htmlFor="address">Address</Label>
+      <div className="space-y-2">
+        <Label htmlFor="address" className="text-base font-bold text-gray-900">Address</Label>
         <Input
           id="address"
           name="address"
@@ -110,8 +110,8 @@ export default function PersonForm({ initialData, onSuccess, onCancel }: PersonF
         />
       </div>
 
-      <div>
-        <Label htmlFor="bio">Bio</Label>
+      <div className="space-y-2">
+        <Label htmlFor="bio" className="text-base font-bold text-gray-900">Bio</Label>
         <Textarea
           id="bio"
           name="bio"

@@ -1,12 +1,9 @@
 import type { NextRequest } from "next/server";
-import { createClient } from "@/utils/supabase/middleware";
+import { NextResponse } from "next/server";
 
 export async function middleware(request: NextRequest) {
-  const { supabase, response } = createClient(request);
-
-  // Refresh user session
-  await supabase.auth.getUser();
-
+  // Passthrough middleware - no authentication required
+  const response = NextResponse.next();
   return response;
 }
 
