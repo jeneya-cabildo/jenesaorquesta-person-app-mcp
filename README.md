@@ -1,80 +1,114 @@
-# Person App
+# Person App - MCP-Enabled CRUD Application
 
-## Description
+![Next.js 16](https://img.shields.io/badge/Next.js-16-black?style=flat&logo=nextjs)
+![React 19](https://img.shields.io/badge/React-19.2-61DAFB?style=flat&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5+-3178C6?style=flat&logo=typescript)
+![Neon PostgreSQL](https://img.shields.io/badge/Neon-PostgreSQL-336791?style=flat&logo=postgresql)
+![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-000?style=flat&logo=vercel)
+![MCP](https://img.shields.io/badge/MCP-Enabled-FF6B6B?style=flat)
 
-Person App is a production-ready Next.js 16 application demonstrating professional CRUD operations with a serverless PostgreSQL database. Built with modern tooling, it showcases best practices for full-stack development including database migrations, server actions, and automated deployment.
+A production-ready Person management application with full CRUD operations, serverless PostgreSQL database, and **MCP (Model Context Protocol) integration** enabling Claude Desktop to manage contacts via natural language.
 
-**Key Upgrade:** Migrated from Supabase to **Neon PostgreSQL** (Serverless) for improved performance, cost efficiency, and Vercel compatibility.
+## 🌟 Highlights
 
-**AI Agent Integration:** Includes a separate MCP (Model Context Protocol) server that enables Claude Desktop to perform Person CRUD operations through natural language.
+✅ **Complete CRUD Operations** - Create, read, update, delete person records  
+✅ **Production Database** - Neon PostgreSQL with auto-scaling and pooling  
+✅ **Server Actions** - No REST API required, direct database mutations  
+✅ **MCP Server** - Claude Desktop can manage your contacts through AI  
+✅ **Type-Safe** - Full TypeScript throughout frontend and backend  
+✅ **Dark Mode** - Complete dark/light theme support  
+✅ **Responsive** - Mobile-optimized UI with Tailwind CSS  
+✅ **Auto-Deployed** - Vercel integration with CI/CD  
+✅ **Documented** - Step-by-step guides for all features  
 
-## 🚀 Live Demo
+## 🎯 Live Demo
 
-**Try the application now:** [https://person-search-orquesta.vercel.app](https://person-search-orquesta.vercel.app)
+**Try it now:** [https://person-search-orquesta.vercel.app](https://person-search-orquesta.vercel.app)
 
-## Features
+### Key Pages
+- **Home** - Search and manage people
+- **[/about](https://person-search-orquesta.vercel.app/about)** - Architecture overview and MCP explanation
+- **[/database](https://person-search-orquesta.vercel.app/database)** - Database schema and Neon details
+- **[/mcp/setup](https://person-search-orquesta.vercel.app/mcp/setup)** - MCP server setup guide
+- **[/mcp/demo](https://person-search-orquesta.vercel.app/mcp/demo)** - Interactive MCP testing
+- **[/github](https://person-search-orquesta.vercel.app/github)** - Repository links
 
-- **Full CRUD Operations** - Create, read, update, and delete person records
-- **Real-time Search** - Filter contacts by name, email, or phone
-- **Production Database** - Neon PostgreSQL with automatic backups and connection pooling
-- **Server Actions** - No REST API required, direct database mutations
-- **Prisma ORM** - Type-safe database access with migrations
-- **Responsive Design** - Mobile-optimized UI with Tailwind CSS
-- **Accessibility** - WCAG-compliant components from Radix UI
-- **Auto-scaling** - Deployed on Vercel with serverless functions
-- **MCP Integration** - Claude Desktop can perform CRUD operations via MCP server
-- **Dark Mode** - Full dark mode support throughout the application
+## 🤖 MCP Integration - Use Claude Desktop to Manage Contacts
 
-## Tech Stack
+This app includes a separate **MCP Server** that lets Claude Desktop perform person CRUD operations through natural language!
+
+### Example Claude Prompts
+```
+"Create a new person named Alice Johnson with email alice@example.com"
+"Show me all people in the database"
+"Update person ID 1 to have a new email address"
+"Delete the contact with ID 5"
+```
+
+### Quick MCP Setup
+1. Clone the [MCP Server Repository](https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp)
+2. Install and build: `pnpm install && pnpm build`
+3. Configure Claude Desktop with your database URL
+4. Restart Claude - "Person App" MCP server will appear!
+
+📖 **[Complete Claude Desktop Setup Guide](docs/CLAUDE_DESKTOP_SETUP.md)**
+
+## 🛠 Tech Stack
 
 ### Frontend
-- **Next.js 16** - React framework with Turbopack
-- **React 19.2** - Latest React version
-- **TypeScript 5+** - Type safety
-- **Tailwind CSS** - Utility-first styling
-- **Shadcn UI** - Component library built on Radix UI
-- **React Hook Form** - Form state management
-- **Zod** - Schema validation
+| Technology | Purpose |
+|------------|---------|
+| **Next.js 16** | React framework with Turbopack |
+| **React 19.2** | Latest React with concurrent rendering |
+| **TypeScript 5+** | Type-safe JavaScript |
+| **Tailwind CSS 4** | Utility-first styling with dark mode |
+| **Shadcn UI** | Production components (Radix UI based) |
+| **React Hook Form** | Efficient form state management |
+| **Zod** | Runtime schema validation |
 
 ### Backend & Database
-- **Next.js Server Actions** - Secure backend operations
-- **Prisma ORM v7** - Type-safe database access with migrations
-- **Neon PostgreSQL** - Serverless, auto-scaling database
-- **Connection Pooling** - Optimized for serverless environments
+| Technology | Purpose |
+|------------|---------|
+| **Next.js Server Actions** | Secure backend operations (no REST API) |
+| **Prisma ORM v7** | Type-safe database access |
+| **Neon PostgreSQL** | Serverless, auto-scaling database |
+| **PG Adapter** | Connection pooling for Vercel |
 
 ### AI Agent Integration
-- **MCP Server** - Separate Node.js MCP server for Claude Desktop
-- **@modelcontextprotocol/sdk** - Official MCP SDK
-- **Direct Database Access** - Prisma ORM with Neon PostgreSQL
+| Technology | Purpose |
+|------------|---------|
+| **MCP SDK** | Model Context Protocol framework |
+| **Node.js** | MCP server runtime |
+| **tsup** | TypeScript bundler |
 
 ### Deployment
-- **Vercel** - Edge functions, auto-scaling, CI/CD
-- **GitHub** - Source control and CI/CD integration
+| Technology | Purpose |
+|------------|---------|
+| **Vercel** | Edge functions, auto-scaling, CI/CD |
+| **GitHub** | Source control and CI/CD |
 
-## System Requirements
+## 📋 System Requirements
 
-- **Node.js 20.9+** - Required for Next.js 16 compatibility
+- **Node.js 20.9+** - Required for Next.js 16
 - **pnpm 10+** - Package manager
-- **Neon Account** - For PostgreSQL database (free tier available)
-- **Vercel Account** - For deployment (free tier available)
+- **Neon Account** - Free tier available at [neon.tech](https://neon.tech)
+- **Vercel Account** - Free tier available at [vercel.com](https://vercel.com)
+- **Claude Desktop** - For MCP testing (optional)
 
-## Getting Started
+## 🚀 Getting Started
 
 ### 1. Clone Repository
-
 ```bash
 git clone https://github.com/jeneya-cabildo/jenesaorquesta-person-app.git
 cd jenesaorquesta-person-app
 ```
 
 ### 2. Install Dependencies
-
 ```bash
 pnpm install
 ```
 
 ### 3. Setup Database
-
 Get your Neon connection string from [console.neon.tech](https://console.neon.tech):
 
 ```bash
@@ -82,415 +116,247 @@ cp .env.example .env.local
 # Edit .env.local and add your DATABASE_URL
 ```
 
-### 4. Run Migrations
+**Use the pooled endpoint** (`-pooler`) for Vercel compatibility:
+```
+postgresql://user:password@host-pooler.neon.tech/database?sslmode=require
+```
 
+### 4. Run Migrations
 ```bash
 pnpm db:migrate
 ```
 
 ### 5. Start Development Server
-
 ```bash
 pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Available Commands
+## 📚 Documentation
+
+| Document | Purpose |
+|----------|---------|
+| **[docs/CLAUDE_DESKTOP_SETUP.md](docs/CLAUDE_DESKTOP_SETUP.md)** | Complete guide to configure Claude Desktop with MCP server |
+| **[docs/MCP_SERVER.md](docs/MCP_SERVER.md)** | MCP server architecture and implementation |
+| **[docs/NEON_SETUP.md](docs/NEON_SETUP.md)** | Neon PostgreSQL configuration guide |
+| **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)** | Vercel deployment instructions |
+| **[docs/MIGRATION_SUMMARY.md](docs/MIGRATION_SUMMARY.md)** | Supabase to Neon migration details |
+| **[QUICK_START.md](QUICK_START.md)** | 5-minute reference guide |
+
+## ⚡ Available Commands
 
 ```bash
-pnpm dev              # Start development server
+# Development
+pnpm dev              # Start development server (http://localhost:3000)
 pnpm build            # Build for production
 pnpm start            # Start production server
+
+# Code Quality
 pnpm lint             # Run ESLint
+
+# Database
 pnpm db:generate      # Generate Prisma client
-pnpm db:migrate       # Run database migrations
+pnpm db:migrate       # Run pending migrations
 pnpm db:seed          # Seed database with sample data
-pnpm db:studio        # Open Prisma Studio (database GUI)
+pnpm db:studio        # Open Prisma Studio (visual database editor)
+pnpm db:push          # Push schema to database (no migration)
+pnpm db:reset         # Reset database (development only)
 ```
 
-## Database Architecture
+## 📊 Database Architecture
 
-### Neon + Vercel Setup
 ```
-User Interface (React)
-    ↓
-Next.js Server Actions
-    ↓
-Prisma ORM (Type-safe)
-    ↓
-PG Adapter (Connection Pooling)
-    ↓
-Neon PostgreSQL (Serverless)
+┌─────────────────────────┐
+│   React Components      │
+│   (UI Layer)            │
+└────────────┬────────────┘
+             │
+┌────────────▼────────────┐
+│ Next.js Server Actions  │
+│ (Business Logic)        │
+└────────────┬────────────┘
+             │
+┌────────────▼────────────┐
+│   Prisma ORM v7         │
+│   (Type-Safe Access)    │
+└────────────┬────────────┘
+             │
+┌────────────▼────────────┐
+│  PG Adapter             │
+│  (Connection Pooling)   │
+└────────────┬────────────┘
+             │
+┌────────────▼────────────┐
+│ Neon PostgreSQL         │
+│ (Serverless Database)   │
+└─────────────────────────┘
 ```
 
-### Why Neon?
-- ✅ **Serverless** - Auto-scales with traffic, no management needed
-- ✅ **Connection Pooling** - Built-in, perfect for Vercel functions
-- ✅ **Free Tier** - Generous credits for development
+### Why Neon + Vercel?
+- ✅ **Serverless** - Auto-scales with traffic, no servers to manage
+- ✅ **Connection Pooling** - Built-in PgBouncer for Vercel's stateless functions
+- ✅ **Free Tier** - Generous free credits for getting started
 - ✅ **Backups** - Automatic daily backups included
-- ✅ **Performance** - Optimized for modern web applications
+- ✅ **Performance** - Optimized for modern serverless deployments
+- ✅ **Cost Efficient** - Pay-per-use, no idle charges
 
-## Deployment to Vercel
+## 🔄 API Architecture
 
-### Step 1: Set Environment Variables
+### Why Server Actions Instead of REST APIs?
 
-In Vercel dashboard, add:
-```
-DATABASE_URL=postgresql://[user]:[password]@[host]-pooler.neon.tech/[database]?sslmode=require
-```
-
-**Note:** Use the `-pooler` endpoint for serverless functions.
-
-### Step 2: Deploy
-
-```bash
-git push origin main
-```
-
-Vercel automatically detects `package.json` changes and deploys.
-
-### Step 3: Verify
-
-Visit your Vercel deployment URL and test the app.
-
-## Documentation
-
-### Key Files
-- **[docs/NEON_SETUP.md](docs/NEON_SETUP.md)** - Comprehensive Neon setup guide
-- **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)** - Vercel deployment guide
-- **[docs/MCP_SERVER.md](docs/MCP_SERVER.md)** - MCP server setup and configuration
-- **[docs/MIGRATION_SUMMARY.md](docs/MIGRATION_SUMMARY.md)** - Migration from Supabase to Neon
-- **[docs/upgrading-next-16.md](docs/upgrading-next-16.md)** - Next.js 16 upgrade notes
-- **[QUICK_START.md](QUICK_START.md)** - 5-minute quick reference
-
-### In-App Documentation Pages
-- **[/mcp/setup](https://person-search-orquesta.vercel.app/mcp/setup)** - Step-by-step MCP server setup
-- **[/mcp/demo](https://person-search-orquesta.vercel.app/mcp/demo)** - Interactive MCP demo
-- **[/database](https://person-search-orquesta.vercel.app/database)** - Database schema and Neon info
-- **[/about](https://person-search-orquesta.vercel.app/about)** - Architecture & tech stack
-- **[/github](https://person-search-orquesta.vercel.app/github)** - GitHub repositories
-
-## Project Structure
-
-```
-.
-├── app/                      # Next.js app directory
-│   ├── components/          # React components
-│   ├── actions/             # Server actions
-│   ├── api/                 # API routes
-│   ├── database/            # Database schema viewer
-│   ├── about/               # About page
-│   └── page.tsx             # Home page
-├── prisma/                  # Prisma configuration
-│   ├── schema.prisma        # Database schema
-│   ├── seed.ts              # Database seeding
-│   └── migrations/          # Migration history
-├── lib/                     # Utility functions
-│   ├── prisma.ts            # Prisma client
-│   └── utils.ts             # Helper functions
-├── docs/                    # Documentation
-├── .env.example             # Environment template
-└── vercel.json              # Vercel configuration
-```
-
-## API Architecture
-
-### Why No REST API?
-
-This application uses **Next.js Server Actions** instead of traditional REST endpoints:
+This app uses **Next.js Server Actions** for all backend operations:
 
 ```tsx
-// No need for /api/people endpoints
+// app/actions/person.ts
 'use server'
-export const getAllPeople = async () => {
-  return prisma.person.findMany()
+
+export const createPerson = async (data: PersonFormData) => {
+  const person = await prisma.person.create({
+    data: {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      address: data.address,
+      bio: data.bio
+    }
+  })
+  revalidatePath('/')
+  return person
 }
 ```
 
 **Benefits:**
-- ✅ Automatic form handling
-- ✅ Type-safe - TypeScript validates both client and server
-- ✅ Reduced complexity - No API routes to maintain
-- ✅ Better performance - Direct database access
-- ✅ Built-in security - CSRF protection included
+- ✅ **Type-Safe** - TypeScript validates both client and server
+- ✅ **Secure** - No public API endpoints to exploit
+- ✅ **Efficient** - Direct database access without HTTP round trips
+- ✅ **Simple** - No API routes to maintain
+- ✅ **CSRF Safe** - Automatic CSRF token handling
 
-## Troubleshooting
+## 🐛 Troubleshooting
 
 ### Port Already in Use
 ```bash
-# Kill the process using port 3000
-lsof -ti:3000 | xargs kill -9  # macOS/Linux
-taskkill /PID [PID] /F          # Windows
+# Find and kill process using port 3000
+# macOS/Linux
+lsof -ti:3000 | xargs kill -9
+
+# Windows PowerShell
+Get-Process -Id (Get-NetTCPConnection -LocalPort 3000).OwningProcess | Stop-Process -Force
 ```
 
 ### Database Connection Issues
 ```bash
 # Verify DATABASE_URL is set
-echo $DATABASE_URL  # macOS/Linux
-echo %DATABASE_URL% # Windows
+echo $DATABASE_URL
 
-# Test connection
-pnpm prisma db execute --stdin < /dev/null
+# Test connection with Prisma
+pnpm exec prisma db execute --stdin < /dev/null
+
+# Check Neon dashboard for connection limits
+# Visit https://console.neon.tech
 ```
 
-### Migrations Issues
+### Migration Errors
 ```bash
-# Reset development database
-pnpm prisma migrate reset
+# Check migration status
+pnpm exec prisma migrate status
 
-# View migration status
-pnpm prisma migrate status
+# Reset development database (WARNING: deletes all data)
+pnpm exec prisma migrate reset
+
+# View detailed error logs
+pnpm exec prisma migrate dev --verbose
 ```
 
-## Performance Tips
+### MCP Server Not Showing in Claude Desktop
+See **[Claude Desktop Setup Guide](docs/CLAUDE_DESKTOP_SETUP.md)** for detailed troubleshooting
 
-1. **Use Connection Pooling** - Always use the `-pooler` endpoint for Vercel
-2. **Batch Queries** - Use `findMany()` instead of multiple `findFirst()` calls
-3. **Implement Caching** - Add Next.js ISR for static content
-4. **Monitor Database** - Check Neon dashboard for slow queries
-5. **Use Indexes** - Prisma creates indexes on `@unique` fields automatically
+## ⚙️ Configuration
 
-## Contributing
+### Environment Variables
+```bash
+# .env.local (create from .env.example)
+DATABASE_URL="postgresql://user:password@host-pooler.neon.tech/database?sslmode=require"
+```
+
+### Vercel Deployment
+Add to your Vercel project environment variables:
+```
+DATABASE_URL = postgresql://[user]:[password]@[host]-pooler.neon.tech/[database]?sslmode=require
+```
+
+Use the `-pooler` endpoint for serverless functions!
+
+## 📈 Performance Tips
+
+1. **Always use pooled endpoints** - Required for Vercel's serverless functions
+2. **Batch queries** - Use `findMany()` instead of multiple `findFirst()` calls
+3. **Enable caching** - Use Next.js ISR for static content
+4. **Monitor slow queries** - Check Neon dashboard for performance issues
+5. **Index important fields** - Prisma auto-indexes `@unique` and `@id` fields
+
+## 🤝 Contributing
 
 Contributions welcome! Please follow these steps:
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. **Fork** the repository
+2. **Create** a feature branch: `git checkout -b feature/amazing-feature`
+3. **Commit** changes: `git commit -m 'Add amazing feature'`
+4. **Push** to branch: `git push origin feature/amazing-feature`
+5. **Open** a Pull Request
 
-## Support & Resources
+Please ensure:
+- Code follows TypeScript best practices
+- Changes are tested locally
+- Commit messages are descriptive
+- README is updated if needed
 
-- **[Neon Documentation](https://neon.tech/docs)** - Database setup and management
-- **[Vercel Documentation](https://vercel.com/docs)** - Deployment and environment
-- **[Next.js Documentation](https://nextjs.org/docs)** - Framework reference
-- **[Prisma Documentation](https://www.prisma.io/docs)** - ORM reference
+## 📞 Support & Resources
 
-## License
+### Official Documentation
+- **[Neon Docs](https://neon.tech/docs)** - Database configuration
+- **[Vercel Docs](https://vercel.com/docs)** - Deployment & serverless
+- **[Next.js Docs](https://nextjs.org/docs)** - Framework reference
+- **[Prisma Docs](https://www.prisma.io/docs)** - ORM guide
+- **[MCP Spec](https://modelcontextprotocol.io)** - Protocol documentation
 
-This project is open source under the MIT License.
+### Project Resources
+- **[GitHub Repository](https://github.com/jeneya-cabildo/jenesaorquesta-person-app)** - Source code
+- **[MCP Server Repository](https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp)** - Separate MCP server
+- **[Issue Tracker](https://github.com/jeneya-cabildo/jenesaorquesta-person-app/issues)** - Bug reports
+- **[Discussions](https://github.com/jeneya-cabildo/jenesaorquesta-person-app/discussions)** - Q&A
 
-## Questions?
+## 📄 License
 
-Check the documentation files in the `docs/` folder or open an issue on GitHub.
-   export default async function UserSearch({ searchParams }: { searchParams: Promise<{ userId?: string }> }) {
-     const resolvedSearchParams = await searchParams;
-     const selectedUserId = resolvedSearchParams?.userId || null;
-     const user = selectedUserId ? await getUserById(selectedUserId) : null;
+This project is open source under the **MIT License**. See [LICENSE](LICENSE) file for details.
 
-     return (
-       <div className="space-y-6">
-         <SearchInput />
-         {selectedUserId && (
-           <Suspense fallback={<p>Loading user...</p>}>
-             {user ? <UserCard user={user} /> : <p>User not found</p>}
-           </Suspense>
-         )}
-       </div>
-     );
-   }
-   ```
+## 🎓 Learning Resources
 
-2. **Improved Performance**:
-   - Data fetching has been optimized to avoid redundant calls. The user object is fetched once in `user-search` and passed as a prop to child components like `UserCard` and `DeleteButton`.
-   - This eliminates multiple fetches, improving performance and reducing server load.
+This project demonstrates professional development practices:
 
-3. **Interaction with `SearchInput`**:
-   - `SearchInput` remains a **Client Component**, responsible for interacting with the user through `react-select`'s `AsyncSelect`.
-   - When a user is selected, the URL is updated with the user's ID using `window.history.pushState`. This triggers a re-render of `user-search` to reflect the updated state.
+- **Server-Side Rendering** - Next.js server components and actions
+- **Type Safety** - End-to-end TypeScript with Prisma
+- **Database Design** - PostgreSQL schema with Prisma migrations
+- **AI Integration** - MCP protocol for Claude Desktop
+- **Responsive UI** - Tailwind CSS with dark mode
+- **Form Handling** - React Hook Form with Zod validation
+- **Deployment** - Serverless functions on Vercel
+- **Error Handling** - Graceful error boundaries and fallbacks
 
-4. **Improved Error Handling**:
-   - Validations and controlled/uncontrolled input warnings have been resolved by ensuring consistent handling in forms using React Hook Form and Zod.
+## 🙏 Acknowledgments
 
-5. **Concurrency & Hydration**:
-   - React 19.2's concurrent rendering and Next.js 16's support for server components ensure seamless server-client hydration, reducing potential mismatches.
-
-### Known Issues
-
-1. **Toast Messages**:
-   - Notifications in `DeleteButton` and `MutableDialog` are currently not showing. This requires debugging the integration of the `Sonner` toast library.
-
-2. **Theme Support**:
-   - The `theme-provider` for managing dark and light modes has been removed temporarily. The Tailwind stylesheets need to be updated to align with the new Next.js configuration.
-
-3. **Hydration Warnings**:
-   - Some hydration warnings may occur due to external browser extensions like Grammarly or differences in runtime environments. Suppression flags have been added, but further testing is recommended.
+Built with these amazing tools:
+- **Next.js** - The React framework for production
+- **Prisma** - The ORM for TypeScript
+- **Neon** - Serverless Postgres
+- **Vercel** - The Edge platform
+- **Shadcn UI** - High-quality components
+- **tailwindcss** - Utility-first CSS
+- **Model Context Protocol** - AI agent standardization
 
 ---
 
-### Updated Project Structure
+**Made with ❤️ by [Jeneya Cabildo](https://github.com/jeneya-cabildo)**
 
-```
-person-search/
-├── app/
-│   ├── components/
-│   │   ├── user-search.tsx
-│   │   ├── search-input.tsx
-│   │   ├── user-card.tsx
-│   │   ├── user-dialog.tsx
-│   │   └── user-form.tsx
-│   ├── actions/
-│   │   ├── actions.ts
-│   │   └── schemas.ts
-│   └── page.tsx
-├── public/
-├── .eslintrc.json
-├── next.config.js
-├── package.json
-├── README.md
-├── tailwind.config.ts
-└── tsconfig.json
-```
-
-### Using `MutableDialog`
-
-The `MutableDialog` component is a reusable dialog framework that can be used for both "Add" and "Edit" operations. It integrates form validation with Zod and React Hook Form, and supports passing default values for edit operations.
-
-#### How `MutableDialog` Works
-
-`MutableDialog` accepts the following props:
-- **`formSchema`**: A Zod schema defining the validation rules for the form.
-- **`FormComponent`**: A React component responsible for rendering the form fields.
-- **`action`**: A function to handle the form submission (e.g., adding or updating a user).
-- **`defaultValues`**: Initial values for the form fields, used for editing existing data.
-- **`triggerButtonLabel`**: Label for the button that triggers the dialog.
-- **`addDialogTitle` / `editDialogTitle`**: Titles for the "Add" and "Edit" modes.
-- **`dialogDescription`**: Description displayed inside the dialog.
-- **`submitButtonLabel`**: Label for the submit button.
-
-#### Example: Add Operation
-
-To use `MutableDialog` for adding a new user:
-
-```tsx
-import { MutableDialog } from './components/mutable-dialog';
-import { userFormSchema, UserFormData } from './actions/schemas';
-import { addUser } from './actions/actions';
-import { UserForm } from './components/user-form';
-
-export function UserAddDialog() {
-  const handleAddUser = async (data: UserFormData) => {
-    try {
-      const newUser = await addUser(data);
-      return {
-        success: true,
-        message: `User ${newUser.name} added successfully`,
-        data: newUser,
-      };
-    } catch (error) {
-      return {
-        success: false,
-        message: `Failed to add user: ${error instanceof Error ? error.message : 'Unknown error'}`,
-      };
-    }
-  };
-
-  return (
-    <MutableDialog<UserFormData>
-      formSchema={userFormSchema}
-      FormComponent={UserForm}
-      action={handleAddUser}
-      triggerButtonLabel="Add User"
-      addDialogTitle="Add New User"
-      dialogDescription="Fill out the form below to add a new user."
-      submitButtonLabel="Save"
-    />
-  );
-}
-```
-
-#### Example: Edit Operation
-
-To use `MutableDialog` for editing an existing user:
-
-```tsx
-import { MutableDialog } from './components/mutable-dialog';
-import { userFormSchema, UserFormData } from './actions/schemas';
-import { updateUser } from './actions/actions';
-import { UserForm } from './components/user-form';
-
-export function UserEditDialog({ user }: { user: UserFormData }) {
-  const handleUpdateUser = async (data: UserFormData) => {
-    try {
-      const updatedUser = await updateUser(user.id, data);
-      return {
-        success: true,
-        message: `User ${updatedUser.name} updated successfully`,
-        data: updatedUser,
-      };
-    } catch (error) {
-      return {
-        success: false,
-        message: `Failed to update user: ${error instanceof Error ? error.message : 'Unknown error'}`,
-      };
-    }
-  };
-
-  return (
-    <MutableDialog<UserFormData>
-      formSchema={userFormSchema}
-      FormComponent={UserForm}
-      action={handleUpdateUser}
-      defaultValues={user} // Pre-fill form fields with user data
-      triggerButtonLabel="Edit User"
-      editDialogTitle="Edit User Details"
-      dialogDescription="Modify the details below and click save to update the user."
-      submitButtonLabel="Update"
-    />
-  );
-}
-```
-
-### Note: Future Refactoring for `ActionState` with React 19
-
-The `MutableDialog` component currently uses a custom `ActionState` type to handle the result of form submissions. However, React 19 introduces built-in support for `ActionState` in Server Actions, which can simplify this implementation. 
-
-#### Improvements to Make:
-- Replace the custom `ActionState` interface with React 19's built-in `ActionState`.
-- Use the `ActionState` directly within the form submission logic to align with React 19 best practices.
-- Refactor error handling and success notifications to leverage React's server-side error handling.
-
-This will be addressed in a future update to ensure the `MutableDialog` component remains aligned with React 19's capabilities.
-
-## MCP Server Integration
-
-This project includes a companion **MCP (Model Context Protocol) Server** that enables Claude Desktop and other MCP clients to perform Person CRUD operations through natural language.
-
-### MCP Server Repository
-
-**GitHub:** [jeneya-cabildo/jenesaorquesta-person-app-mcp](https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp)
-
-### Quick Start with MCP
-
-1. Clone the MCP server repository
-2. Install dependencies with `pnpm install`
-3. Configure your DATABASE_URL in `.env.local`
-4. Add the MCP server to Claude Desktop config
-5. Start performing Person CRUD operations in Claude!
-
-### Available MCP Tools
-
-- **createPerson** - Create new person records
-- **readPerson** - Query persons by ID or list all
-- **updatePerson** - Update existing records
-- **deletePerson** - Delete person records
-
-Learn more: [docs/MCP_SERVER.md](docs/MCP_SERVER.md)
-
-## Contributing
-
-Contributions are welcome! Please submit a Pull Request with your changes.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-
-## Contact
-
-Callum Bir - [@callumbir](https://twitter.com/callumbir)  
-Project Link: [https://github.com/jeneya-cabildo/jenesaorquesta-person-app](https://github.com/jeneya-cabildo/jenesaorquesta-person-app)  
-MCP Server: [https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp](https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp)
-
+**[Live Demo](https://person-search-orquesta.vercel.app) • [GitHub](https://github.com/jeneya-cabildo/jenesaorquesta-person-app) • [MCP Server](https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp) • [Docs](docs/)**

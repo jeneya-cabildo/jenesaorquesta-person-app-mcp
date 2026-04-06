@@ -42,6 +42,32 @@ export default function MCPSetupPage() {
             </p>
           </Card>
 
+          {/* Complete Configuration Guide Link */}
+          <Card className="p-8 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/30 dark:to-orange-900/30 border-amber-200/50 dark:border-amber-700/50 shadow-lg">
+            <div className="flex items-start gap-4">
+              <Zap className="h-6 w-6 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-1" />
+              <div>
+                <h2 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">📖 Need Complete Setup Instructions?</h2>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  For detailed, OS-specific instructions to configure Claude Desktop and get "Person App" working, see our comprehensive guide:
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Button asChild variant="default" size="lg" className="bg-amber-600 hover:bg-amber-700">
+                    <a href="/docs/CLAUDE_DESKTOP_SETUP.md" target="_blank" rel="noopener noreferrer">
+                      <Zap className="h-5 w-5 mr-2" />
+                      Claude Desktop Configuration Guide
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" size="lg">
+                    <a href="https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp#troubleshooting" target="_blank" rel="noopener noreferrer">
+                      View on GitHub
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </Card>
+
           {/* Prerequisites */}
           <Card className="p-8 bg-blue-50 dark:bg-slate-800 border-blue-200/50 dark:border-slate-600/50">
             <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Prerequisites</h2>
