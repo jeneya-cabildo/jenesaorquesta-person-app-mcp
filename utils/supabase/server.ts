@@ -1,4 +1,8 @@
-import { createServerClient } from "@supabase/ssr";
+// This file is deprecated and no longer used
+// Database connection is now handled through Prisma with Neon
+export const createClient = () => {
+  throw new Error("Supabase server client is deprecated. Use Prisma instead.");
+};
 import { cookies } from "next/headers";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;

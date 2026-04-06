@@ -1,7 +1,15 @@
 {
     "version": 2,
     "framework": "nextjs",
-    "outputDirectory": ".next"
+    "outputDirectory": ".next",
+    "buildCommand": "pnpm build",
+    "devCommand": "pnpm dev",
+    "env": {
+      "DATABASE_URL": {
+        "description": "PostgreSQL connection string from Neon (use pooled endpoint)",
+        "required": true
+      }
+    }
   }
   
   

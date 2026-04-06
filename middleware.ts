@@ -1,10 +1,9 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-export async function middleware(request: NextRequest) {
+export function middleware(request: NextRequest) {
   // Passthrough middleware - no authentication required
-  const response = NextResponse.next();
-  return response;
+  return NextResponse.next();
 }
 
 export const config = {

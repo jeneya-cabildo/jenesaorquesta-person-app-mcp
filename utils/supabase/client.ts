@@ -1,10 +1,5 @@
-import { createBrowserClient } from "@supabase/ssr";
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY;
-
-export const createClient = () =>
-  createBrowserClient(
-    supabaseUrl!,
-    supabaseKey!
-  );
+// This file is deprecated and no longer used
+// Database connection is now handled through Prisma with Neon
+export const createClient = () => {
+  throw new Error("Supabase client is deprecated. Use Prisma instead.");
+};
