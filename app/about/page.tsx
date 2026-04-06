@@ -150,8 +150,8 @@ export default function AboutPage() {
           {/* MCP Integration */}
           <Card className="p-8 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-slate-800 dark:to-slate-700 border-indigo-200/50 dark:border-slate-600/50">
             <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">AI Agent Integration with MCP</h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-              This app includes a separate <strong>Person MCP Server</strong> that enables AI agents (like Claude Desktop) to perform CRUD operations directly through the Model Context Protocol.
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+              This app includes a separate <strong>Person MCP Server</strong> that enables AI agents (like Claude Desktop) to perform CRUD operations directly through the Model Context Protocol. The MCP protocol allows AI agents to invoke tools with secure access to your database.
             </p>
             
             <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -166,14 +166,27 @@ export default function AboutPage() {
               </div>
 
               <div className="space-y-3">
-                <h3 className="font-semibold text-lg text-gray-900 dark:text-white">Architecture</h3>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
-                  <li>• <strong>MCP Server:</strong> Node.js with @modelcontextprotocol/sdk</li>
-                  <li>• <strong>Protocol:</strong> MCP (Model Context Protocol) v1.0</li>
-                  <li>• <strong>Database:</strong> Neon PostgreSQL via Prisma ORM</li>
-                  <li>• <strong>Client:</strong> Claude Desktop integration</li>
-                </ul>
+                <h3 className="font-semibold text-lg text-gray-900 dark:text-white">How It Works</h3>
+                <div className="space-y-2 text-gray-700 dark:text-gray-300 text-sm bg-white dark:bg-slate-900 p-4 rounded border border-indigo-200 dark:border-slate-600">
+                  <div className="text-center"><strong>Claude Desktop</strong></div>
+                  <div className="text-center text-gray-600 dark:text-gray-400">↓ (MCP Protocol stdin/stdout)</div>
+                  <div className="text-center"><strong>Person MCP Server (Node.js)</strong></div>
+                  <div className="text-center text-gray-600 dark:text-gray-400">↓</div>
+                  <div className="text-center"><strong>Prisma ORM</strong></div>
+                  <div className="text-center text-gray-600 dark:text-gray-400">↓</div>
+                  <div className="text-center text-indigo-600 dark:text-indigo-400 font-bold">Neon PostgreSQL</div>
+                </div>
               </div>
+            </div>
+
+            <div className="bg-white dark:bg-slate-900 p-4 rounded border border-indigo-200 dark:border-slate-600 mb-6">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Technical Stack</h3>
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm grid grid-cols-2">
+                  <li>• <strong>MCP Server:</strong> Node.js</li>
+                  <li>• <strong>Protocol:</strong> MCP v1.0</li>
+                  <li>• <strong>ORM:</strong> Prisma v7</li>
+                  <li>• <strong>Database:</strong> Neon PostgreSQL</li>
+              </ul>
             </div>
 
             <div className="flex flex-wrap gap-3">

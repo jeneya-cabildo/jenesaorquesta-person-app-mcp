@@ -45,13 +45,36 @@ This app includes a separate **MCP Server** that lets Claude Desktop perform per
 "Delete the contact with ID 5"
 ```
 
-### Quick MCP Setup
-1. Clone the [MCP Server Repository](https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp)
-2. Install and build: `pnpm install && pnpm build`
-3. Configure Claude Desktop with your database URL
-4. Restart Claude - "Person App" MCP server will appear!
+### Quick MCP Setup (5 Minutes)
+1. [Clone the MCP Server Repository](https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp)
+   ```bash
+   git clone https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp.git
+   cd jenesaorquesta-person-app-mcp
+   pnpm install && pnpm build
+   ```
 
-📖 **[Complete Claude Desktop Setup Guide](docs/CLAUDE_DESKTOP_SETUP.md)**
+2. Configure Claude Desktop:
+   - **macOS/Linux**: Edit `~/.config/Claude/claude_desktop_config.json`
+   - **Windows**: Edit `%APPDATA%\Claude\claude_desktop_config.json`
+   
+   Add this configuration:
+   ```json
+   {
+     "mcpServers": {
+       "person-app": {
+         "command": "node",
+         "args": ["/path/to/jenesaorquesta-person-app-mcp/dist/index.js"],
+         "env": {
+           "DATABASE_URL": "postgresql://user:pass@host-pooler.neon.tech/db?sslmode=require"
+         }
+       }
+     }
+   }
+   ```
+
+3. Restart Claude Desktop → Look for ⚙️ MCP icon → Verify "person-app" shows as **Connected** ✓
+
+📖 **[Complete Claude Desktop Setup Guide](docs/CLAUDE_DESKTOP_SETUP.md)** for detailed OS-specific instructions
 
 ## 🛠 Tech Stack
 

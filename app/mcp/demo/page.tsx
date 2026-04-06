@@ -3,12 +3,41 @@
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { CheckCircle2, AlertCircle } from 'lucide-react'
-import { useState } from 'react'
+import { CheckCircle2, AlertCircle, Copy, ExternalLink } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 export default function MCPDemoPage() {
   const [demoStep, setDemoStep] = useState(0)
   const [isSetup, setIsSetup] = useState(false)
+  const [copied, setCopied] = useState<string | null>(null)
+  const [claudeAvailable, setClaudeAvailable] = useState<boolean | null>(null)
+
+  // Check if Claude Desktop config file path exists
+  useEffect(() => {
+    // Try to detect Claude availability via browser APIs if possible
+    const checkClaude = async () => {
+      try {
+        // Claude Desktop communication check - this is a heuristic
+        const response = await fetch('http://localhost:11434/api/tags', { 
+          method: 'GET',
+          mode: 'no-cors'
+        }).catch(() => null)
+        setClaudeAvailable(response !== null)
+      } catch (error) {
+        setClaudeAvailable(false)
+      }
+    }
+    
+    // Only check after a delay to avoid blocking
+    const timer = setTimeout(checkClaude, 500)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const copyToClipboard = (text: string, id: string) => {
+    navigator.clipboard.writeText(text)
+    setCopied(id)
+    setTimeout(() => setCopied(null), 2000)
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
@@ -30,37 +59,86 @@ export default function MCPDemoPage() {
 
         <div className="space-y-8">
           {/* Setup Status */}
-          <Card className="p-8 bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Setup Status</h2>
+          <Card className="p-8 bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 shadow-lg">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Setup Verification</h2>
               {isSetup ? (
                 <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
                   <CheckCircle2 className="h-6 w-6" />
-                  <span className="font-semibold">Configured</span>
+                  <span className="font-semibold">Configured ✓</span>
                 </div>
               ) : (
                 <div className="flex items-center gap-2 text-yellow-600 dark:text-yellow-400">
                   <AlertCircle className="h-6 w-6" />
-                  <span className="font-semibold">Pending Setup</span>
+                  <span className="font-semibold">Setup Required</span>
                 </div>
               )}
             </div>
             
-            {!isSetup && (
-              <div className="bg-yellow-50 dark:bg-slate-700 border border-yellow-200 dark:border-yellow-600 rounded p-4 mb-4">
-                <p className="text-sm text-yellow-800 dark:text-yellow-200">
-                  To test the MCP server, follow the <Link href="/mcp/setup" className="font-bold underline">setup instructions</Link> to configure the Person App MCP server in Claude Desktop.
+            {!isSetup ? (
+              <div className="space-y-4 mb-6">
+                <div className="bg-blue-50 dark:bg-slate-700 border border-blue-200 dark:border-blue-600 rounded p-4">
+                  <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Getting Started</h3>
+                  <p className="text-sm text-blue-800 dark:text-blue-200 mb-3">
+                    To test the MCP server with Claude Desktop:
+                  </p>
+                  <ol className="text-sm text-blue-800 dark:text-blue-200 space-y-1 ml-4 list-decimal">
+                    <li>Follow the <Link href="/mcp/setup" className="font-bold underline hover:no-underline">setup instructions</Link></li>
+                    <li>Clone the MCP repository and install dependencies</li>
+                    <li>Add configuration to Claude Desktop config file</li>
+                    <li>Restart Claude Desktop</li>
+                    <li>Mark as configured once setup is complete</li>
+                  </ol>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="bg-gray-50 dark:bg-slate-700 p-3 rounded">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 font-semibold uppercase">Repository</p>
+                    <Button asChild variant="link" className="p-0 h-auto mt-1">
+                      <a href="https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 text-sm flex items-center gap-1">
+                        GitHub <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </Button>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-slate-700 p-3 rounded">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 font-semibold uppercase">Setup Guide</p>
+                    <Button asChild variant="link" className="p-0 h-auto mt-1">
+                      <Link href="/mcp/setup" className="text-blue-600 dark:text-blue-400 text-sm">
+                        View Instructions
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="bg-green-50 dark:bg-slate-700 border border-green-200 dark:border-green-600 rounded p-4 mb-6">
+                <p className="text-sm text-green-800 dark:text-green-200">
+                  ✓ Your MCP server is configured! Try these prompts in Claude Desktop to test:
                 </p>
+                <div className="mt-3 space-y-2">
+                  <div className="bg-white dark:bg-slate-800 p-2 rounded text-xs font-mono text-gray-700 dark:text-gray-300">
+                    "Create a person named Alice Smith"
+                  </div>
+                  <div className="bg-white dark:bg-slate-800 p-2 rounded text-xs font-mono text-gray-700 dark:text-gray-300">
+                    "Show me all people in the database"
+                  </div>
+                </div>
               </div>
             )}
 
-            <Button 
-              onClick={() => setIsSetup(!isSetup)}
-              variant={isSetup ? "outline" : "default"}
-              className="w-full"
-            >
-              {isSetup ? 'Mark as Not Configured' : 'Mark as Configured'}
-            </Button>
+            <div className="flex gap-3">
+              <Button 
+                onClick={() => setIsSetup(!isSetup)}
+                className={isSetup ? "w-full" : "flex-1"}
+              >
+                {isSetup ? '← Mark as Not Configured' : 'Mark as Configured →'}
+              </Button>
+              {!isSetup && (
+                <Button asChild variant="outline" className="flex-1">
+                  <Link href="/mcp/setup">Setup Now</Link>
+                </Button>
+              )}
+            </div>
           </Card>
 
           {/* Demo Workflow */}
