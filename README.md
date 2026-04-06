@@ -6,6 +6,8 @@ Person App is a production-ready Next.js 16 application demonstrating profession
 
 **Key Upgrade:** Migrated from Supabase to **Neon PostgreSQL** (Serverless) for improved performance, cost efficiency, and Vercel compatibility.
 
+**AI Agent Integration:** Includes a separate MCP (Model Context Protocol) server that enables Claude Desktop to perform Person CRUD operations through natural language.
+
 ## 🚀 Live Demo
 
 **Try the application now:** [https://person-search-orquesta.vercel.app](https://person-search-orquesta.vercel.app)
@@ -20,6 +22,8 @@ Person App is a production-ready Next.js 16 application demonstrating profession
 - **Responsive Design** - Mobile-optimized UI with Tailwind CSS
 - **Accessibility** - WCAG-compliant components from Radix UI
 - **Auto-scaling** - Deployed on Vercel with serverless functions
+- **MCP Integration** - Claude Desktop can perform CRUD operations via MCP server
+- **Dark Mode** - Full dark mode support throughout the application
 
 ## Tech Stack
 
@@ -37,6 +41,11 @@ Person App is a production-ready Next.js 16 application demonstrating profession
 - **Prisma ORM v7** - Type-safe database access with migrations
 - **Neon PostgreSQL** - Serverless, auto-scaling database
 - **Connection Pooling** - Optimized for serverless environments
+
+### AI Agent Integration
+- **MCP Server** - Separate Node.js MCP server for Claude Desktop
+- **@modelcontextprotocol/sdk** - Official MCP SDK
+- **Direct Database Access** - Prisma ORM with Neon PostgreSQL
 
 ### Deployment
 - **Vercel** - Edge functions, auto-scaling, CI/CD
@@ -150,9 +159,17 @@ Visit your Vercel deployment URL and test the app.
 ### Key Files
 - **[docs/NEON_SETUP.md](docs/NEON_SETUP.md)** - Comprehensive Neon setup guide
 - **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)** - Vercel deployment guide
+- **[docs/MCP_SERVER.md](docs/MCP_SERVER.md)** - MCP server setup and configuration
 - **[docs/MIGRATION_SUMMARY.md](docs/MIGRATION_SUMMARY.md)** - Migration from Supabase to Neon
 - **[docs/upgrading-next-16.md](docs/upgrading-next-16.md)** - Next.js 16 upgrade notes
 - **[QUICK_START.md](QUICK_START.md)** - 5-minute quick reference
+
+### In-App Documentation Pages
+- **[/mcp/setup](https://person-search-orquesta.vercel.app/mcp/setup)** - Step-by-step MCP server setup
+- **[/mcp/demo](https://person-search-orquesta.vercel.app/mcp/demo)** - Interactive MCP demo
+- **[/database](https://person-search-orquesta.vercel.app/database)** - Database schema and Neon info
+- **[/about](https://person-search-orquesta.vercel.app/about)** - Architecture & tech stack
+- **[/github](https://person-search-orquesta.vercel.app/github)** - GitHub repositories
 
 ## Project Structure
 
@@ -437,6 +454,31 @@ The `MutableDialog` component currently uses a custom `ActionState` type to hand
 
 This will be addressed in a future update to ensure the `MutableDialog` component remains aligned with React 19's capabilities.
 
+## MCP Server Integration
+
+This project includes a companion **MCP (Model Context Protocol) Server** that enables Claude Desktop and other MCP clients to perform Person CRUD operations through natural language.
+
+### MCP Server Repository
+
+**GitHub:** [jeneya-cabildo/jenesaorquesta-person-app-mcp](https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp)
+
+### Quick Start with MCP
+
+1. Clone the MCP server repository
+2. Install dependencies with `pnpm install`
+3. Configure your DATABASE_URL in `.env.local`
+4. Add the MCP server to Claude Desktop config
+5. Start performing Person CRUD operations in Claude!
+
+### Available MCP Tools
+
+- **createPerson** - Create new person records
+- **readPerson** - Query persons by ID or list all
+- **updatePerson** - Update existing records
+- **deletePerson** - Delete person records
+
+Learn more: [docs/MCP_SERVER.md](docs/MCP_SERVER.md)
+
 ## Contributing
 
 Contributions are welcome! Please submit a Pull Request with your changes.
@@ -449,5 +491,6 @@ This project is open source and available under the [MIT License](LICENSE).
 ## Contact
 
 Callum Bir - [@callumbir](https://twitter.com/callumbir)  
-Project Link: [https://github.com/gocallum/person-search](https://github.com/gocallum/person-search)  
+Project Link: [https://github.com/jeneya-cabildo/jenesaorquesta-person-app](https://github.com/jeneya-cabildo/jenesaorquesta-person-app)  
+MCP Server: [https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp](https://github.com/jeneya-cabildo/jenesaorquesta-person-app-mcp)
 

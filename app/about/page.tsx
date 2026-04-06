@@ -147,6 +147,45 @@ export default function AboutPage() {
             </div>
           </Card>
 
+          {/* MCP Integration */}
+          <Card className="p-8 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-slate-800 dark:to-slate-700 border-indigo-200/50 dark:border-slate-600/50">
+            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">AI Agent Integration with MCP</h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+              This app includes a separate <strong>Person MCP Server</strong> that enables AI agents (like Claude Desktop) to perform CRUD operations directly through the Model Context Protocol.
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div className="space-y-3">
+                <h3 className="font-semibold text-lg text-gray-900 dark:text-white">MCP Capabilities</h3>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-indigo-600 dark:text-indigo-400" /> Create persons via natural language</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-indigo-600 dark:text-indigo-400" /> Query database through Claude</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-indigo-600 dark:text-indigo-400" /> Update records with AI assistance</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-indigo-600 dark:text-indigo-400" /> Delete operations safely</li>
+                </ul>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="font-semibold text-lg text-gray-900 dark:text-white">Architecture</h3>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+                  <li>• <strong>MCP Server:</strong> Node.js with @modelcontextprotocol/sdk</li>
+                  <li>• <strong>Protocol:</strong> MCP (Model Context Protocol) v1.0</li>
+                  <li>• <strong>Database:</strong> Neon PostgreSQL via Prisma ORM</li>
+                  <li>• <strong>Client:</strong> Claude Desktop integration</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <Button asChild variant="outline" size="sm" className="bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-600">
+                <Link href="/mcp/setup">Setup Instructions</Link>
+              </Button>
+              <Button asChild variant="outline" size="sm" className="bg-white dark:bg-slate-700">
+                <Link href="/mcp/demo">View Demo</Link>
+              </Button>
+            </div>
+          </Card>
+
           {/* CTA Card */}
           <Card className="p-8 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white shadow-xl">
             <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
