@@ -1,83 +1,259 @@
-# Person Search
+# Person App
 
 ## Description
 
-Person Search is a Next.js application upgraded to leverage **Next.js 16** and **React 19.2**. It demonstrates advanced search functionality using Next.js Server Components and react-select's `AsyncSelect` component. Users can search for people from a pre-populated list and view detailed information about the selected person.
+Person App is a production-ready Next.js 16 application demonstrating professional CRUD operations with a serverless PostgreSQL database. Built with modern tooling, it showcases best practices for full-stack development including database migrations, server actions, and automated deployment.
 
-The upgrade to Next.js 16 builds upon the async API changes from Next.js 15, with Turbopack now enabled by default and various performance improvements. See [docs/upgrading-next-16.md](docs/upgrading-next-16.md) for detailed upgrade notes.
+**Key Upgrade:** Migrated from Supabase to **Neon PostgreSQL** (Serverless) for improved performance, cost efficiency, and Vercel compatibility.
 
 ## Features
 
-- Asynchronous search functionality
-- Server-side filtering of user data
-- Server-rendered and hydrated client-side components
-- Single data fetch for improved performance
-- Responsive design using Tailwind CSS
-- Accessibility-focused UI components from Radix UI
-- Custom fonts (Geist Sans and Geist Mono)
-- Improved type safety with TypeScript
-- Modular and reusable component architecture
+- **Full CRUD Operations** - Create, read, update, and delete person records
+- **Real-time Search** - Filter contacts by name, email, or phone
+- **Production Database** - Neon PostgreSQL with automatic backups and connection pooling
+- **Server Actions** - No REST API required, direct database mutations
+- **Prisma ORM** - Type-safe database access with migrations
+- **Responsive Design** - Mobile-optimized UI with Tailwind CSS
+- **Accessibility** - WCAG-compliant components from Radix UI
+- **Auto-scaling** - Deployed on Vercel with serverless functions
 
-## Technologies Used
+## Tech Stack
 
-- **Next.js 16** - React framework with Turbopack by default
-- **React 19.2** - Latest React version with View Transitions, useEffectEvent, and Activity
-- **TypeScript 5+** - Strongly-typed superset of JavaScript
-- **Node.js 20.9+** - Required for compatibility with Next.js 16
-- **Tailwind CSS** - Utility-first CSS framework
-- **Radix UI** - Collection of accessible, unstyled UI components
-- **React Hook Form** - Performant and flexible forms library
-- **Zod** - TypeScript-first schema declaration and validation library
-- **React Select** - Flexible Select Input control for React
-- **Sonner** - Lightweight toast notifications for React
+### Frontend
+- **Next.js 16** - React framework with Turbopack
+- **React 19.2** - Latest React version
+- **TypeScript 5+** - Type safety
+- **Tailwind CSS** - Utility-first styling
+- **Shadcn UI** - Component library built on Radix UI
+- **React Hook Form** - Form state management
+- **Zod** - Schema validation
 
-### Minimum Node.js Version
+### Backend & Database
+- **Next.js Server Actions** - Secure backend operations
+- **Prisma ORM v7** - Type-safe database access with migrations
+- **Neon PostgreSQL** - Serverless, auto-scaling database
+- **Connection Pooling** - Optimized for serverless environments
 
-The application requires **Node.js 20.9.0** or newer. Node.js 18 is no longer supported in Next.js 16.
+### Deployment
+- **Vercel** - Edge functions, auto-scaling, CI/CD
+- **GitHub** - Source control and CI/CD integration
+
+## System Requirements
+
+- **Node.js 20.9+** - Required for Next.js 16 compatibility
+- **pnpm 10+** - Package manager
+- **Neon Account** - For PostgreSQL database (free tier available)
+- **Vercel Account** - For deployment (free tier available)
 
 ## Getting Started
 
+### 1. Clone Repository
 
-### Installation
+```bash
+git clone https://github.com/jeneya-cabildo/jenesaorquesta-person-app.git
+cd jenesaorquesta-person-app
+```
 
-1. Clone the repository:
+### 2. Install Dependencies
 
-   ```bash
-   git clone https://github.com/gocallum/person-search.git
-   cd person-search
-   ```
+```bash
+pnpm install
+```
 
-2. Install dependencies:
+### 3. Setup Database
 
-   ```bash
-   pnpm install
-   ```
+Get your Neon connection string from [console.neon.tech](https://console.neon.tech):
 
-3. Create a `.env.local` file in the root directory and add any necessary environment variables.
+```bash
+cp .env.example .env.local
+# Edit .env.local and add your DATABASE_URL
+```
 
-### Running the Development Server
+### 4. Run Migrations
+
+```bash
+pnpm db:migrate
+```
+
+### 5. Start Development Server
 
 ```bash
 pnpm dev
 ```
 
-### Other Commands
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Available Commands
 
 ```bash
-pnpm build    # Build for production
-pnpm start    # Start production server
-pnpm lint     # Run ESLint
+pnpm dev              # Start development server
+pnpm build            # Build for production
+pnpm start            # Start production server
+pnpm lint             # Run ESLint
+pnpm db:generate      # Generate Prisma client
+pnpm db:migrate       # Run database migrations
+pnpm db:seed          # Seed database with sample data
+pnpm db:studio        # Open Prisma Studio (database GUI)
 ```
 
-## How It Works (Next.js 16 & React 19.2)
+## Database Architecture
 
-### Key Changes in `UserSearch` Component
+### Neon + Vercel Setup
+```
+User Interface (React)
+    ↓
+Next.js Server Actions
+    ↓
+Prisma ORM (Type-safe)
+    ↓
+PG Adapter (Connection Pooling)
+    ↓
+Neon PostgreSQL (Serverless)
+```
 
-1. **Server Component Design**:
-   - The `user-search` component is now a **Server Component**, leveraging `searchParams` and fetching user details server-side.
-   - `searchParams` are asynchronous (mandatory in Next.js 16 - synchronous access has been fully removed).
+### Why Neon?
+- ✅ **Serverless** - Auto-scales with traffic, no management needed
+- ✅ **Connection Pooling** - Built-in, perfect for Vercel functions
+- ✅ **Free Tier** - Generous credits for development
+- ✅ **Backups** - Automatic daily backups included
+- ✅ **Performance** - Optimized for modern web applications
 
-   ```tsx
+## Deployment to Vercel
+
+### Step 1: Set Environment Variables
+
+In Vercel dashboard, add:
+```
+DATABASE_URL=postgresql://[user]:[password]@[host]-pooler.neon.tech/[database]?sslmode=require
+```
+
+**Note:** Use the `-pooler` endpoint for serverless functions.
+
+### Step 2: Deploy
+
+```bash
+git push origin main
+```
+
+Vercel automatically detects `package.json` changes and deploys.
+
+### Step 3: Verify
+
+Visit your Vercel deployment URL and test the app.
+
+## Documentation
+
+### Key Files
+- **[docs/NEON_SETUP.md](docs/NEON_SETUP.md)** - Comprehensive Neon setup guide
+- **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)** - Vercel deployment guide
+- **[docs/MIGRATION_SUMMARY.md](docs/MIGRATION_SUMMARY.md)** - Migration from Supabase to Neon
+- **[docs/upgrading-next-16.md](docs/upgrading-next-16.md)** - Next.js 16 upgrade notes
+- **[QUICK_START.md](QUICK_START.md)** - 5-minute quick reference
+
+## Project Structure
+
+```
+.
+├── app/                      # Next.js app directory
+│   ├── components/          # React components
+│   ├── actions/             # Server actions
+│   ├── api/                 # API routes
+│   ├── database/            # Database schema viewer
+│   ├── about/               # About page
+│   └── page.tsx             # Home page
+├── prisma/                  # Prisma configuration
+│   ├── schema.prisma        # Database schema
+│   ├── seed.ts              # Database seeding
+│   └── migrations/          # Migration history
+├── lib/                     # Utility functions
+│   ├── prisma.ts            # Prisma client
+│   └── utils.ts             # Helper functions
+├── docs/                    # Documentation
+├── .env.example             # Environment template
+└── vercel.json              # Vercel configuration
+```
+
+## API Architecture
+
+### Why No REST API?
+
+This application uses **Next.js Server Actions** instead of traditional REST endpoints:
+
+```tsx
+// No need for /api/people endpoints
+'use server'
+export const getAllPeople = async () => {
+  return prisma.person.findMany()
+}
+```
+
+**Benefits:**
+- ✅ Automatic form handling
+- ✅ Type-safe - TypeScript validates both client and server
+- ✅ Reduced complexity - No API routes to maintain
+- ✅ Better performance - Direct database access
+- ✅ Built-in security - CSRF protection included
+
+## Troubleshooting
+
+### Port Already in Use
+```bash
+# Kill the process using port 3000
+lsof -ti:3000 | xargs kill -9  # macOS/Linux
+taskkill /PID [PID] /F          # Windows
+```
+
+### Database Connection Issues
+```bash
+# Verify DATABASE_URL is set
+echo $DATABASE_URL  # macOS/Linux
+echo %DATABASE_URL% # Windows
+
+# Test connection
+pnpm prisma db execute --stdin < /dev/null
+```
+
+### Migrations Issues
+```bash
+# Reset development database
+pnpm prisma migrate reset
+
+# View migration status
+pnpm prisma migrate status
+```
+
+## Performance Tips
+
+1. **Use Connection Pooling** - Always use the `-pooler` endpoint for Vercel
+2. **Batch Queries** - Use `findMany()` instead of multiple `findFirst()` calls
+3. **Implement Caching** - Add Next.js ISR for static content
+4. **Monitor Database** - Check Neon dashboard for slow queries
+5. **Use Indexes** - Prisma creates indexes on `@unique` fields automatically
+
+## Contributing
+
+Contributions welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## Support & Resources
+
+- **[Neon Documentation](https://neon.tech/docs)** - Database setup and management
+- **[Vercel Documentation](https://vercel.com/docs)** - Deployment and environment
+- **[Next.js Documentation](https://nextjs.org/docs)** - Framework reference
+- **[Prisma Documentation](https://www.prisma.io/docs)** - ORM reference
+
+## License
+
+This project is open source under the MIT License.
+
+## Questions?
+
+Check the documentation files in the `docs/` folder or open an issue on GitHub.
    export default async function UserSearch({ searchParams }: { searchParams: Promise<{ userId?: string }> }) {
      const resolvedSearchParams = await searchParams;
      const selectedUserId = resolvedSearchParams?.userId || null;
