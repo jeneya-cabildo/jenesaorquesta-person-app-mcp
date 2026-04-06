@@ -6,6 +6,10 @@ Person App is a production-ready Next.js 16 application demonstrating profession
 
 **Key Upgrade:** Migrated from Supabase to **Neon PostgreSQL** (Serverless) for improved performance, cost efficiency, and Vercel compatibility.
 
+## 🚀 Live Demo
+
+**Try the application now:** [https://person-search-orquesta.vercel.app](https://person-search-orquesta.vercel.app)
+
 ## Features
 
 - **Full CRUD Operations** - Create, read, update, and delete person records
