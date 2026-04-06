@@ -64,7 +64,7 @@ export default function AboutPage() {
 
           {/* Features Grid */}
           <Card className="p-8 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 border-blue-200/50 dark:border-slate-600/50">
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">✨ Key Features</h2>
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Key Features</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
                 { icon: '➕', title: 'Create', desc: 'Add new contacts with all details' },
@@ -85,7 +85,7 @@ export default function AboutPage() {
 
           {/* Architecture */}
           <Card className="p-8 bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 shadow-lg">
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">🏗️ Architecture & Tech Stack</h2>
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Architecture & Tech Stack</h2>
             
             <div className="space-y-6">
               {/* Stack Overview */}
@@ -132,7 +132,7 @@ export default function AboutPage() {
 
               {/* Data Flow */}
               <div className="mt-8 p-6 bg-gradient-to-r from-gray-100 to-gray-50 dark:from-slate-700 dark:to-slate-600 rounded-lg border border-gray-200 dark:border-slate-500">
-                <p className="text-sm font-mono text-gray-800 dark:text-gray-200 space-y-2">
+                <div className="text-sm font-mono text-gray-800 dark:text-gray-200 space-y-2">
                   <div>User Interface (React)</div>
                   <div className="text-center text-gray-600 dark:text-gray-400">↓</div>
                   <div>Server Actions (TypeScript)</div>
@@ -142,7 +142,7 @@ export default function AboutPage() {
                   <div>PG Adapter (Connection Pool)</div>
                   <div className="text-center text-gray-600 dark:text-gray-400">↓</div>
                   <div className="text-green-600 dark:text-green-400 font-bold">Neon PostgreSQL (Serverless)</div>
-                </p>
+                </div>
               </div>
             </div>
           </Card>
