@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { CheckCircle2, AlertCircle } from 'lucide-react'
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function MCPDemoPage() {
   const [demoStep, setDemoStep] = useState(0)
@@ -133,12 +134,44 @@ export default function MCPDemoPage() {
                       <div>{`})`}</div>
                       <div className="text-gray-500 mt-2">{`// Returns: { id: 1, name: "Alice Johnson", ... }`}</div>
                     </div>
+
+                    {/* CREATE Screenshots */}
+                    <div className="mt-4 space-y-3">
+                      <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Live Demo Screenshots</p>
+                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                        <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-slate-600">
+                          <div className="px-3 py-1.5 bg-gray-100 dark:bg-slate-600 text-xs font-medium text-gray-600 dark:text-gray-300">
+                            Claude Desktop — MCP tool response
+                          </div>
+                          <Image
+                            src="/screenshots/mcp-create-claude.png"
+                            alt="Claude Desktop creating Alice Johnson via MCP tool"
+                            width={600}
+                            height={400}
+                            className="w-full object-cover"
+                          />
+                        </div>
+                        <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-slate-600">
+                          <div className="px-3 py-1.5 bg-gray-100 dark:bg-slate-600 text-xs font-medium text-gray-600 dark:text-gray-300">
+                            Person App — record visible in UI
+                          </div>
+                          <Image
+                            src="/screenshots/mcp-create-result.png"
+                            alt="Person App UI showing Alice Johnson added to the directory"
+                            width={600}
+                            height={400}
+                            className="w-full object-cover"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
                     <Button 
                       onClick={() => setDemoStep(Math.max(1, demoStep))}
                       disabled={demoStep >= 1}
                       variant={demoStep >= 1 ? "outline" : "default"}
                       size="sm"
-                      className="bg-green-600 hover:bg-green-700 text-white disabled:opacity-70"
+                      className="bg-green-600 hover:bg-green-700 text-white disabled:opacity-70 mt-4"
                     >
                       {demoStep >= 1 ? '✓ Done' : 'Step Complete'}
                     </Button>
@@ -165,12 +198,30 @@ export default function MCPDemoPage() {
                       <div>{`readPerson({})`}</div>
                       <div className="text-gray-500 mt-2">{`// Returns: "Found 1 persons: [{ id: 1, name: ... }]"`}</div>
                     </div>
+
+                    {/* READ Screenshot */}
+                    <div className="mt-4 space-y-3">
+                      <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Live Demo Screenshot</p>
+                      <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-slate-600">
+                        <div className="px-3 py-1.5 bg-gray-100 dark:bg-slate-600 text-xs font-medium text-gray-600 dark:text-gray-300">
+                          Claude Desktop — readPerson result showing 2 records
+                        </div>
+                        <Image
+                          src="/screenshots/mcp-read-claude.png"
+                          alt="Claude Desktop showing all persons in a table via readPerson MCP tool"
+                          width={800}
+                          height={500}
+                          className="w-full object-cover"
+                        />
+                      </div>
+                    </div>
+
                     <Button 
                       onClick={() => setDemoStep(Math.max(2, demoStep))}
                       disabled={demoStep < 1 || demoStep >= 2}
                       variant={demoStep >= 2 ? "outline" : "default"}
                       size="sm"
-                      className={demoStep >= 1 && demoStep < 2 ? "bg-blue-600 hover:bg-blue-700 text-white" : ""}
+                      className={`mt-4 ${demoStep >= 1 && demoStep < 2 ? "bg-blue-600 hover:bg-blue-700 text-white" : ""}`}
                     >
                       {demoStep >= 2 ? '✓ Done' : 'Step Complete'}
                     </Button>
@@ -200,12 +251,44 @@ export default function MCPDemoPage() {
                       <div>{`})`}</div>
                       <div className="text-gray-500 mt-2">// Returns: updated person object</div>
                     </div>
+
+                    {/* UPDATE Screenshots */}
+                    <div className="mt-4 space-y-3">
+                      <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Live Demo Screenshots</p>
+                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                        <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-slate-600">
+                          <div className="px-3 py-1.5 bg-gray-100 dark:bg-slate-600 text-xs font-medium text-gray-600 dark:text-gray-300">
+                            Claude Desktop — updatePerson response
+                          </div>
+                          <Image
+                            src="/screenshots/mcp-update-claude.png"
+                            alt="Claude Desktop showing updatePerson result with before/after bio comparison"
+                            width={600}
+                            height={400}
+                            className="w-full object-cover"
+                          />
+                        </div>
+                        <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-slate-600">
+                          <div className="px-3 py-1.5 bg-gray-100 dark:bg-slate-600 text-xs font-medium text-gray-600 dark:text-gray-300">
+                            Person App — updated record in UI
+                          </div>
+                          <Image
+                            src="/screenshots/mcp-update-result.png"
+                            alt="Person App UI showing Alice Johnson with updated bio Principal Engineer"
+                            width={600}
+                            height={400}
+                            className="w-full object-cover"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
                     <Button 
                       onClick={() => setDemoStep(Math.max(3, demoStep))}
                       disabled={demoStep < 2 || demoStep >= 3}
                       variant={demoStep >= 3 ? "outline" : "default"}
                       size="sm"
-                      className={demoStep >= 2 && demoStep < 3 ? "bg-purple-600 hover:bg-purple-700 text-white" : ""}
+                      className={`mt-4 ${demoStep >= 2 && demoStep < 3 ? "bg-purple-600 hover:bg-purple-700 text-white" : ""}`}
                     >
                       {demoStep >= 3 ? '✓ Done' : 'Step Complete'}
                     </Button>
@@ -232,12 +315,30 @@ export default function MCPDemoPage() {
                       <div>{`deletePerson({ id: 1 })`}</div>
                       <div className="text-gray-500 mt-2">// Returns: "Person with ID 1 deleted successfully"</div>
                     </div>
+
+                    {/* DELETE Screenshot */}
+                    <div className="mt-4 space-y-3">
+                      <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Live Demo Screenshot</p>
+                      <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-slate-600">
+                        <div className="px-3 py-1.5 bg-gray-100 dark:bg-slate-600 text-xs font-medium text-gray-600 dark:text-gray-300">
+                          Claude Desktop — deletePerson confirmation
+                        </div>
+                        <Image
+                          src="/screenshots/mcp-delete-claude.png"
+                          alt="Claude Desktop showing deletePerson result confirming Alice Johnson was removed"
+                          width={800}
+                          height={500}
+                          className="w-full object-cover"
+                        />
+                      </div>
+                    </div>
+
                     <Button 
                       onClick={() => setDemoStep(4)}
                       disabled={demoStep < 3 || demoStep >= 4}
                       variant={demoStep >= 4 ? "outline" : "default"}
                       size="sm"
-                      className={demoStep >= 3 && demoStep < 4 ? "bg-red-600 hover:bg-red-700 text-white" : ""}
+                      className={`mt-4 ${demoStep >= 3 && demoStep < 4 ? "bg-red-600 hover:bg-red-700 text-white" : ""}`}
                     >
                       {demoStep >= 4 ? '✓ Done' : 'Step Complete'}
                     </Button>
@@ -285,6 +386,23 @@ export default function MCPDemoPage() {
                 <div>{`// Rolls   : [17]`}</div>
                 <div>{`// Total   : 17`}</div>
               </div>
+
+              {/* DICE Screenshot */}
+              <div className="space-y-3">
+                <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Live Demo Screenshot</p>
+                <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-slate-600">
+                  <div className="px-3 py-1.5 bg-gray-100 dark:bg-slate-600 text-xs font-medium text-gray-600 dark:text-gray-300">
+                    Claude Desktop — rollDice result
+                  </div>
+                  <Image
+                    src="/screenshots/mcp-dice-claude.png"
+                    alt="Claude Desktop showing rollDice result with a d20 roll of 8"
+                    width={800}
+                    height={500}
+                    className="w-full object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </Card>
 
@@ -317,6 +435,23 @@ export default function MCPDemoPage() {
                 <div>{`  3.  Player 3: 2H 5D 9C JH AS`}</div>
                 <div>{`        High Card -- A high`}</div>
               </div>
+
+              {/* POKER Screenshot */}
+              <div className="space-y-3">
+                <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Live Demo Screenshot</p>
+                <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-slate-600">
+                  <div className="px-3 py-1.5 bg-gray-100 dark:bg-slate-600 text-xs font-medium text-gray-600 dark:text-gray-300">
+                    Claude Desktop — dealPokerHands 3-player result
+                  </div>
+                  <Image
+                    src="/screenshots/mcp-poker-claude.png"
+                    alt="Claude Desktop showing dealPokerHands result with ranked hands for 3 players"
+                    width={800}
+                    height={600}
+                    className="w-full object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </Card>
 
@@ -347,6 +482,23 @@ export default function MCPDemoPage() {
                 <div>{`Dealer shows: 6S + [hidden]`}</div>
                 <div>{``}</div>
                 <div>{`Basic strategy: Stand`}</div>
+              </div>
+
+              {/* BLACKJACK Screenshot */}
+              <div className="space-y-3">
+                <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Live Demo Screenshot</p>
+                <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-slate-600">
+                  <div className="px-3 py-1.5 bg-gray-100 dark:bg-slate-600 text-xs font-medium text-gray-600 dark:text-gray-300">
+                    Claude Desktop — playBlackjack new hand with strategy advice
+                  </div>
+                  <Image
+                    src="/screenshots/mcp-blackjack-claude.png"
+                    alt="Claude Desktop showing playBlackjack new hand with cards and basic strategy advice"
+                    width={800}
+                    height={600}
+                    className="w-full object-cover"
+                  />
+                </div>
               </div>
             </div>
           </Card>
