@@ -116,14 +116,14 @@ export default function GitHubPage() {
             
             <div className="grid md:grid-cols-2 gap-4">
               <Button asChild variant="outline" className="h-auto py-4 px-4 flex flex-col items-start justify-start">
-                <Link href="/mcp/setup">
+                <Link href="/mcp-setup">
                   <span className="font-semibold text-blue-600 dark:text-blue-400">MCP Setup Guide</span>
                   <span className="text-xs text-gray-600 dark:text-gray-400 mt-1">Configure MCP server in Claude Desktop</span>
                 </Link>
               </Button>
 
               <Button asChild variant="outline" className="h-auto py-4 px-4 flex flex-col items-start justify-start">
-                <Link href="/mcp/demo">
+                <Link href="/mcp-demo">
                   <span className="font-semibold text-purple-600 dark:text-purple-400">MCP Demo</span>
                   <span className="text-xs text-gray-600 dark:text-gray-400 mt-1">See CRUD operations in action</span>
                 </Link>

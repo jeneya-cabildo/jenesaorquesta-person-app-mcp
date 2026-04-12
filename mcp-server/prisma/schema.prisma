@@ -1,0 +1,22 @@
+// datasource — URL is configured in prisma.config.ts (Prisma 7)
+datasource db {
+  provider = "postgresql"
+}
+
+// generator
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+// Person model - matches the main app schema
+model Person {
+  id        Int     @id @default(autoincrement())
+  name      String
+  email     String  @unique
+  phone     String?
+  address   String?
+  bio       String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -178,10 +178,10 @@ export default function AboutPage() {
 
             <div className="flex flex-wrap gap-3">
               <Button asChild variant="outline" size="sm" className="bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-600">
-                <Link href="/mcp/setup">Setup Instructions</Link>
+                <Link href="/mcp-setup">Setup Instructions</Link>
               </Button>
               <Button asChild variant="outline" size="sm" className="bg-white dark:bg-slate-700">
-                <Link href="/mcp/demo">View Demo</Link>
+                <Link href="/mcp-demo">View Demo</Link>
               </Button>
             </div>
           </Card>

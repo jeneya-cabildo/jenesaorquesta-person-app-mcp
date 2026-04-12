@@ -10,6 +10,11 @@
 !.yarn/releases
 !.yarn/versions
 
+# mcp-server generated/installed files
+mcp-server/node_modules/
+mcp-server/dist/
+mcp-server/.env
+
 # testing
 /coverage
 

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Users, Github } from 'lucide-react';
+import { Users, Github, Zap } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import ThemeToggle from './theme-toggle';
 
@@ -21,16 +21,23 @@ export default function Navbar() {
             <Link href="/" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:bg-blue-50 dark:hover:bg-slate-800">
               Home
             </Link>
-            <Link href="/about" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:bg-blue-50 dark:hover:bg-slate-800">
+            <Link href="/about" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:bg-blue-50 dark:hover:bg-slate-800 hidden md:inline-block">
               About
             </Link>
-            <Link href="/database" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:bg-blue-50 dark:hover:bg-slate-800 hidden sm:inline-block">
+            <Link href="/database" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:bg-blue-50 dark:hover:bg-slate-800 hidden lg:inline-block">
               Database
             </Link>
+            <Link href="/mcp-setup" className="text-gray-700 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:bg-purple-50 dark:hover:bg-slate-800 hidden md:inline-block">
+              MCP Setup
+            </Link>
+            <Link href="/mcp-demo" className="flex items-center gap-1 text-gray-700 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-400 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:bg-pink-50 dark:hover:bg-slate-800 hidden lg:inline-flex">
+              <Zap className="h-3.5 w-3.5" />
+              MCP Demo
+            </Link>
             <Button asChild variant="ghost" size="icon" className="hover:bg-gray-100 dark:hover:bg-slate-800">
-              <a href="https://github.com/jeneya-cabildo/jenesaorquesta-person-app" target="_blank" rel="noopener noreferrer">
+              <Link href="/github">
                 <Github className="h-5 w-5 text-gray-700 dark:text-gray-300" />
-              </a>
+              </Link>
             </Button>
             <div className="mx-1" />
             <ThemeToggle />
